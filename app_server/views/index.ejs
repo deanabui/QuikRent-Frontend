@@ -23,7 +23,7 @@
   
   <hr>
   <div class="row">
-  	<div class="col-xs-8" id="left">
+  	<div class="col-xs-4" id="left">
   	  
       <p>
   	    <font size="4" color="black" text-align="center">Short blurb about quikrent?</font>
@@ -39,7 +39,7 @@
         
 
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-8">
         <!--map-canvas will be postioned here-->
         <h3>My Google Maps Demo</h3>
     <div id="map"></div>
@@ -47,7 +47,7 @@
      function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
-          zoom: 6
+          zoom: 10
         });
         var infoWindow = new google.maps.InfoWindow({map: map});
 
