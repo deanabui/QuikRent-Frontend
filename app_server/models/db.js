@@ -4,10 +4,10 @@ var mongoose = require('mongoose');
 var dbURI = 'mongodb://localhost/QuikRent-Frontend';
 mongoose.connect(dbURI);
 
-//for you windows users 
+//for you windows users
 var readLine = require('readline');
 if(process.platform === 'win32'){
-    var rl = readLine.createInterfact({
+    var rl = readLine.createInterface({
         input: process.stdin,
         output: process.stdout
     });
@@ -39,21 +39,21 @@ var gracefulShutdown = function(msg, callback){
 };
 
 //need to call the gracefulShutdown when nodemon restarts it
-proces.once('SIGURSR2', function(){
+process.once('SIGURSR2', function(){
     gracefulShutdown('nodemon restart', function(){
         process.kill(process.pid, 'SIGUSR2');
     });
 });
 
 //or when the app terminates
-proces.once('SIGINT', function(){
+process.once('SIGINT', function(){
     gracefulShutdown('app termination', function(){
         process.exit(0);
     });
 });
 
 //or when Heroku app shutdowns
-proces.once('SIGTERM', function(){
+process.once('SIGTERM', function(){
     gracefulShutdown('heroku app shutdown', function(){
         process.exit(0);
     });
