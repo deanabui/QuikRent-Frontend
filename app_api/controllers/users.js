@@ -3,14 +3,17 @@ var mongoose = require('mongoose');
 //bringing in the Search model so we can interact with the Searches collection
 var srch = mongoose.model('Search');
 
+
+//relates to get method
 module.exports.searchesList = function(req,res){
     sendJsonResponse(res, 200, {"status" : "success"});
 };
 
+//post method
 module.exports.searchesCreate = function(req,res){
     
 };
-
+//put method
 module.exports.searchesReadOne = function(req,res){
     if(req.params && req.params.searchid){
         srch

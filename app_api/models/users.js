@@ -14,6 +14,39 @@ var searchSchema = new mongoose.Schema({
     //coords: {type: [Number], index: '2dshere'} for when we allow coordinates
 });
 
+
+var userSchema = new mongoose.Schema({
+   name:{
+       type: String,
+       required: true
+       
+   }, 
+   userName: {
+   type: String,
+   required: true,
+   unique: true
+   },
+    password: {
+        type: String,
+        required: true
+    },
+    email_address: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    slack_token: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    //the feild searches that will be a sub document connected to the user
+    searches: [searchSchema]
+    
+});
+
+
+
 //building a model of the search schema
-mongoose.model('Search', searchSchema);
+mongoose.model('User', userSchema, 'user');
 
