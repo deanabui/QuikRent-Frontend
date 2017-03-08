@@ -60,4 +60,4 @@ process.once('SIGTERM', function(){
 });
 
 //adding db stuff
-require('./searches');
+require('./users');

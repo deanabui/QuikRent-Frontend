@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var ctrlSearches = require('../controllers/searches');
+var ctrlSearches = require('../controllers/users');
 
 //get the search w/ params
 router.get('/searches', ctrlSearches.searchesList);

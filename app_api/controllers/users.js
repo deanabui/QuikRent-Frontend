@@ -1,7 +1,7 @@
 //gives controller access to the database connection
 var mongoose = require('mongoose');
 //bringing in the Search model so we can interact with the Searches collection
-var srch = mongoose.model('Search');
+var srch = mongoose.model('user');
 
 
 //relates to get method
