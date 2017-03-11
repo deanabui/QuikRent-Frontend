@@ -3,8 +3,8 @@
 	<head>
 		<% include partials/header%>
         <style>
-       @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
-       @import url(https://fonts.googleapis.com/css?family=Oswald);
+         @import url(https://fonts.googleapis.com/css?family=Oswald);
+         @import url('https://fonts.googleapis.com/css?family=Lora');
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +23,7 @@
 }
 
 body {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Lora", serif; /*, Helvetica, Arial, sans-serif*/
   font-weight: 100;
   font-size: 15px;
   line-height: 30px;
@@ -42,7 +42,7 @@ body {
 #contact input[type="password"],
 #contact textarea,
 #contact button[type="submit"] {
-  font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+  font: 400 12px/16px "Lora", serif;  /*, Helvetica, Arial, sans-serif*/
 }
 
 #contact {
@@ -59,16 +59,11 @@ body {
 
 #contact h3 {
   display: block;
+  font-family: 'Oswald', sans-serif;
   font-size: 30px;
   font-weight: 300;
   margin-bottom: 10px;
-}
-
-#contact h4 {
-  margin: 5px 0 15px;
-  display: block;
-  font-size: 13px;
-  font-weight: 400;
+  text-align:center;
 }
 
 fieldset {
@@ -113,6 +108,7 @@ fieldset {
   margin: 0 0 5px;
   padding: 10px;
   font-size: 15px;
+  font-family: 'Oswald', sans-serif;
 }
 
 #contact button[type="submit"]:hover {
@@ -152,7 +148,7 @@ fieldset {
 	<body>
         <% include partials/nav%>
   <form id="contact" action="" method="post">
-    <h3 style="text-align:center;">Login to QuikRent!</h3>
+    <h3>Login to QuikRent!</h3>
     <fieldset>
       <input placeholder="Your Email Address" type="email" tabindex="2" required>
     </fieldset>

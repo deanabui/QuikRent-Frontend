@@ -2,6 +2,30 @@
 <html lang="en">
 	<head>
     <% include partials/header%>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Oswald);
+      @import url('https://fonts.googleapis.com/css?family=Lora');
+
+form {
+  font-family: "Lora", serif; /*, Helvetica, Arial, sans-serif*/
+  font-weight: 100;
+  font-size: 15px;
+  line-height: 30px;
+  color: #777;
+  background-image: url(/images/bluewindows.jpg);
+}
+
+h3 {
+  display: block;
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  text-align:center;
+  font-family: 'Oswald', sans-serif;
+  font-style: bold;
+}
+
+    </style>
     <link href="/bootstrap/css/form.css" rel="stylesheet">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3QMrDnbwoXTmNLW0xNOHHCLNjI54CKdQ&libraries=drawing&callback=initMap" async defer></script>
 	</head>

@@ -2,34 +2,48 @@
 <html lang="en">
   <style>
 
+
+/*color change when hovering over links*/
 .navbar-custom .navbar-nav > li > a:hover,
 .navbar-custom .navbar-nav > li > a:focus {
     color: #fff;
     background-color: #4e4b7b;
 }
 
+.navbar-custom .navbar-left {
+  margin: 5px;
+  margin-left: 5px;
+}
+
+.navbar-nav {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  display: inline-block!;
+  float: right!;
+}
+
 </style>
 
-<div class="navbar navbar-custom navbar-fixed-top" style = "background-color: #837ece;">
+<div class="navbar navbar-custom navbar-fixed-top" style = "background-color: #837ece">
+  <a class="navbar-left" href="/"><img src="/images/logowdoor.png" height="50" width="50" ></a>
   
- <div class="navbar-header">
-   <a class="navbar-brand" href="/">
-     <font face ="Oswald" size="6" >QuikRênt</font></a>
+  <div class="navbar-header">
+   <!--<a class="navbar-brand" href="/"><font face ="Oswald" size="6">QuikRênt</font></a>-->
 
     <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </a>
+            
   </div>
   
   <div class="navbar-collapse collapse">
     
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/">Home</a></li>
       <li><a href="login">Login</a></li>
       <li><a href="register">Register</a></li>
-      <li>&nbsp;</li>
+      <!--<li>&nbsp;</li>-->
     </ul>
     
   </div>
