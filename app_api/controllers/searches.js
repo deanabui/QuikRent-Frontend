@@ -101,3 +101,36 @@ module.exports.updateSearch = function(req,res){
         }
     });
 };
+
+//delete
+module.exports.deleteSearch = function(req,res){
+    if(!req.params.userid || !req.params.searchid){
+        sendJsonResponse(res,404,{"message":"Not found, userid and searchid are both required."});
+        return;
+    }
+    Usr
+        .findById(req.params.userid)
+        .select('searches')
+        .exec(function(err,user){
+            if(!user){
+                sendJsonResponse(res,404,{"message":"userid not found."});
+                return;
+            }
+        if(user.searches && user.searches.length > 0){
+            if(!user.searches.id(req.params.searchid)){
+                sendJsonResponse(res,404,{"Message": "searchid not found"});
+            }else{
+                user.searches.id(req.params.searchid).remove();
+                user.save(function(err){
+                    if(err){
+                        sendJsonReponse(res,404,err);
+                    }else{
+                        sendJsonResponse(res,204,null);
+                    }
+                });
+            }
+        }else{
+            sendJsonResponse(res,404,{"message":"No searches to delete"});
+        }
+    });
+};
