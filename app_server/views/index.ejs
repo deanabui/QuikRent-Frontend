@@ -13,6 +13,8 @@ form {
   line-height: 30px;
   color: #777;
   background-image: url(/images/bluewindows.jpg);
+  z-index: 10;
+  position: absolute;
 }
 
 h3 {
@@ -33,7 +35,6 @@ h3 {
 <!-- begin template -->
   <% include partials/nav%>
   <div class="container-fluid" id="main">
-  <div class="row">
   	<div class="col-xs-3">
       <form id="search" action="" method="post">
         <h3 style="text-align:center;">Search for your next home</h3>
@@ -62,10 +63,9 @@ h3 {
           <button name="submit" type="submit" id="search-submit" data-submit="...Sending" disabled>Try It Now</button>
         </fieldset>
       </form>
-    </div> <!-- col-xs-5 -->
+    </div> <!-- col-xs-3 -->
     </sdiv>
-    <div class="col-xs-9">
-<div id="map"></div>
+  <div id="map"></div>
     <script>
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -107,9 +107,8 @@ h3 {
       }
     </script>
     
-      </div>
-  </div>
-</div>
+  </div> <!--map-->
+</div> <!--container-fluid-->
 <!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
