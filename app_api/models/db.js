@@ -2,6 +2,11 @@ var mongoose = require('mongoose');
 
 // the path might not work for c9 users
 var dbURI = 'mongodb://localhost/QuikRent-Frontend';
+//checking node_env to set 
+if(process.env.NODE_ENV === 'production'){
+    dbURI = process.env.MONGOLAB_URI;
+     //dbURI='mongodb://admin:quikrent2017@ds145329.mlab.com:45329/quikrent';
+}
 mongoose.connect(dbURI);
 
 //for you windows users
