@@ -2,33 +2,8 @@
 <html lang="en">
 	<head>
     <% include partials/header%>
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Oswald);
-      @import url('https://fonts.googleapis.com/css?family=Lora');
-
-form {
-  font-family: "Lora", serif; /*, Helvetica, Arial, sans-serif*/
-  font-weight: 100;
-  font-size: 15px;
-  line-height: 30px;
-  color: #777;
-  background-image: url(/images/bluewindows.jpg);
-  z-index: 10;
-  position: absolute;
-}
-
-h3 {
-  display: block;
-  font-size: 30px;
-  font-weight: 300;
-  margin-bottom: 10px;
-  text-align:center;
-  font-family: 'Oswald', sans-serif;
-  font-style: bold;
-}
-
-    </style>
-    <link href="/bootstrap/css/form.css" rel="stylesheet">
+    
+    <link href="/bootstrap/css/index.css" rel="stylesheet">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3QMrDnbwoXTmNLW0xNOHHCLNjI54CKdQ&libraries=drawing&callback=initMap" defer></script>
 	</head>
 	<body>
@@ -37,7 +12,7 @@ h3 {
   <div class="container-fluid" id="main">
   	<div class="col-xs-3">
       <form id="search" action="" method="post">
-        <h3 style="text-align:center;">Search for your next home</h3>
+        <h3>Search for your next home</h3>
         <fieldset>
           <input placeholder="State" type="text"  id="regforminput" required>
         </fieldset>
