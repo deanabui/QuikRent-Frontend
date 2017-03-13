@@ -6,5 +6,6 @@ var ctrlMain = require('../controllers/main');
 router.get('/', ctrlMain.index);
 router.get('/register', ctrlMain.register);
 router.get('/login', ctrlMain.login);
+router.get('/account', ctrlMain.account);
 
 module.exports = router;
