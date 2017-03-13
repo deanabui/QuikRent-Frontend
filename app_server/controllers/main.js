@@ -14,3 +14,7 @@ module.exports.login = function(req, res){
 module.exports.account = function(req, res){
   res.render('account', { title: 'Profile QuikRent' });
 };
+
+module.exports.about = function(req, res){
+  res.render('about', { title: 'About' });
+};

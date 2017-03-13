@@ -7,5 +7,6 @@ router.get('/', ctrlMain.index);
 router.get('/register', ctrlMain.register);
 router.get('/login', ctrlMain.login);
 router.get('/account', ctrlMain.account);
+router.get('/about', ctrlMain.about);
 
 module.exports = router;
