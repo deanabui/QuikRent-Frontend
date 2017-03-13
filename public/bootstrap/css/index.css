@@ -25,7 +25,6 @@ body {
   font-size: 15px;
   line-height: 30px;
   color: #777;
-  background-image: url(/images/background.jpg);
 }  
 
 /*search box*/
@@ -51,7 +50,7 @@ h3 {
   font-size: 30px;
   font-weight: 300;
   margin-bottom: 10px;
-  text-align:center;
+  text-align: center;
   font-family: 'Oswald', sans-serif;
   font-style: bold;
 }
@@ -61,12 +60,12 @@ h3 {
 }
 
 #map {
-  height:800px;
+  height:100%;
   width: 100%;
-  padding: 25px;
-  margin: 50px;
-  margin-left: auto;
-  margin-right: auto;
+  /*padding: 25px;*/
+  /*margin: 50px;*/
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
 }
 
 /*searchbox input*/

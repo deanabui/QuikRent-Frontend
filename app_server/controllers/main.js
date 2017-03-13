@@ -11,6 +11,11 @@ module.exports.login = function(req, res){
   res.render('login', { title: 'Log into QuikRent' });
 };
 
+<<<<<<< HEAD
 module.exports.account = function(req, res){
   res.render('account', { title: 'Log into QuikRent' });
+=======
+module.exports.account= function(req, res){
+  res.render('account', { title: 'Profile for QuikRent' });
+>>>>>>> deana
 };
