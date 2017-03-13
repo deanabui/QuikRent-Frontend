@@ -35,10 +35,11 @@ body {
 }
 
 #account input[type="picture"],
-#account input[type="name"],
+#account input[type="text"],
 #account input[type="email"],
 #account input[type="password"],
 #account input[type="password_confirm"],
+#account input[type="tel"],
 #account textarea,
 #account button[type="edit"],
 #account button[type="save"] {
@@ -77,10 +78,11 @@ fieldset {
 }
 
 #account input[type="picture"],
-#account input[type="name"],
+#account input[type="text"],
 #account input[type="email"],
 #account input[type="password"],
 #account input[type="password_confirm"],
+#account input[type="tel"],
 #account textarea,
 #account button[type="edit"],
 #account button[type="save"] {
@@ -90,13 +92,14 @@ fieldset {
   margin: 0 0 5px;
   padding: 10px;
   font-family: 'Lora', sans-serif;
+  float: right;
 }
 
-#account input[type="picture"]:hover,
-#account input[type="name"]:hover,
+#account input[type="text"]:hover,
 #account input[type="email"]:hover,
 #account input[type="password"]:hover,
 #account input[type="password_confirm"]:hover,
+#account input[type="tel"]:hover,
 #account textarea:hover {
   -webkit-transition: border-color 0.3s ease-in-out;
   -moz-transition: border-color 0.3s ease-in-out;
@@ -110,10 +113,16 @@ fieldset {
   resize: none;
 }
 
+#account input[type="password"]
+{
+  -webkit-text-security: disc;
+}
+
 #account button[type="edit"],
 #account button[type="save"]{
   cursor: pointer;
   width: 100%;
+  text-align: center;
   border: none;
   background: #837ece;
   color: #FFF;
