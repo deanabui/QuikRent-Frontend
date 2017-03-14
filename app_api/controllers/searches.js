@@ -1,11 +1,13 @@
 var mongoose = require('mongoose');
 var Usr = mongoose.model('User');
 
+//helper function
 var sendJsonResponse = function(res,status,content){
   res.status(status);
   res.json(content);
 };
 
+//helper function
 var doAddSearch = function(req,res,user){
     if(!user){
         sendJsonResponse(res,404,{"message":"userid not found"});
@@ -28,7 +30,7 @@ var doAddSearch = function(req,res,user){
     }
 }
 
-//get
+//get -- R
 module.exports.getSearch = function(req,res){ 
     //sendJsonResponse(res,200, {"status": "success"});
     
@@ -42,7 +44,7 @@ module.exports.getSearch = function(req,res){
   });
 };
 
-//post
+//post -- C
 module.exports.newSearch = function(req,res){
    var userid = req.params.userid;
     if(userid){
@@ -61,7 +63,7 @@ module.exports.newSearch = function(req,res){
     }
 };
 
-//put
+//put -- U
 module.exports.updateSearch = function(req,res){
     if(!req.params.userid || !req.params.searchid){
         sendJsonResponse(res,404,{"message":"Not found, userid and searchid are both required."});
@@ -102,7 +104,7 @@ module.exports.updateSearch = function(req,res){
     });
 };
 
-//delete
+//delete -- Ds
 module.exports.deleteSearch = function(req,res){
     if(!req.params.userid || !req.params.searchid){
         sendJsonResponse(res,404,{"message":"Not found, userid and searchid are both required."});

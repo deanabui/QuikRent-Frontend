@@ -8,7 +8,7 @@ var sendJsonResponse = function(res,status,content){
   res.json(content);
 };
 
-//get
+//get -- R
 module.exports.getUser = function(req,res){ 
     //sendJsonResponse(res,200, {"status": "success"});
     
@@ -19,7 +19,7 @@ module.exports.getUser = function(req,res){
   });
 };
 
-//post
+//post -- C
 module.exports.createUser = function(req,res){
     console.log(req.body);
     Usr.create({
@@ -39,7 +39,7 @@ module.exports.createUser = function(req,res){
     });
 };
 
-//put
+//put -- U
 module.exports.updateUser = function(req,res){
   if(!req.params.userid){
       sendJsonResponse(res,404, {"message": "Not found. UseriD is required."});
@@ -69,7 +69,7 @@ module.exports.updateUser = function(req,res){
     });
 };
 
-//delete
+//delete -- D
 module.exports.deleteUser = function(req,res){
     var userid = req.params.userid;
     if(userid){
