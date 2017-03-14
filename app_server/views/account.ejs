@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 	<head>
 		<% include partials/header%>
@@ -10,13 +11,8 @@
         
   <form id="account" action="" method="post">
     <h3>Account Information</h3>
-    <div class="container-fluid" id="main">
-        
-        <div class="col-xs-6">
-            <img src="/images/anonprofile.png" alt="Smiley face" height="200" width="200">
-        </div>
-        
-        <div class="col-xs-6">
+    <div class="container-fluid" style="text-align:center" id="main">
+            <img src="/images/anonprofile.png" alt="Profile Pic" width="200px" height="200px" style="padding-bottom: 10px">
             <fieldset>
                 <input placeholder="Jane Doe" type="text" tabindex="1" required autofocus readonly>
             </fieldset>
@@ -35,8 +31,6 @@
             <!--<fieldset>-->
                 <!--  <button name="save" type="save" id="account-save" data-save="...Sending">Save</button>-->
             <!--</fieldset>-->
-        </div>
-        
         <fieldset>
             <button name="edit" type="edit" id="account-edit" data-edit="...Sending">Edit</button>
         </fieldset>
