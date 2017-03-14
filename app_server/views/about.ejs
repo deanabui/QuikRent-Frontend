@@ -2,44 +2,51 @@
 <html lang="en">
 	<head>
 		<% include partials/header%>
-  <link href="/bootstrap/css/account.css" rel="stylesheet">
+  <link href="/bootstrap/css/about.css" rel="stylesheet">
 	</head>
 	<body>
         <% include partials/nav%>
         
         
   <form id="account" action="" method="post">
-    <h3>About</h3>
+    
     <div class="container-fluid" id="main">
-        
-        <div class="col-xs-6">
-            <img src="/images/anonprofile.png" alt="Smiley face" height="200" width="200">
+      <div style="float"><h1>Meet the Crew</h1></div>
+        <div class="row" style="text-align:center">
+            <div class="col-xs-6">
+                <img src="/images/ruellia.jpeg" alt="Ruellia" width="200px" height="200px" style="border-radius: 50%">
+                <p>Ruellia Zhang<br/>
+                    EC2 Guru
+                </p>
+            </div>
+            <div class="col-xs-6">
+                <img src="/images/Deana Baby2.jpg" alt="Deana" width="200px" height="200px" style="border-radius: 50%">
+                <p>Deana Bui<br/>
+                    Mighty Morphin' Frontend Ranger
+                </p>
+            </div>
+        </div>
+        <div class="row" style="text-align:center">
+            <img src="/images/susana.jpeg" alt="Susana" width="200px" height="200px" style="border-radius: 50%">    
+            <p>Susana Fotu<br/>
+                Team Success Crusader
+            </p>
+        </div>
+        <div class="row" style="text-align:center">
+            <div class="col-xs-6">
+                <img src="/images/vera.jpeg" alt="Vera" width="200px" height="200px" style="border-radius: 50%">
+                <p>Vera Williams<br/>
+                    Backbonista
+                </p>
+            </div>
+            <div class="col-xs-6">
+                <img src="/images/sam.jpeg" alt="Sam" width="200px" height="200px" style="border-radius: 50%">
+                <p>Sam Ruben<br/>
+                    Resident Baller
+                </p>
+            </div>
         </div>
         
-        <div class="col-xs-6">
-            <fieldset>
-                <input placeholder="Jane Doe" type="text" tabindex="1" required autofocus readonly>
-            </fieldset>
-            <fieldset>
-                <input placeholder="janedoe@quikrent" type="email" tabindex="2" required readonly>
-            </fieldset>
-            <fieldset>
-                <input placeholder="••••••••••" type="password" tabindex="2" required readonly>
-            </fieldset>
-            <!--<fieldset>-->
-                <!--  <input placeholder="Confirm Password" type="password_confirm" tabindex="2" required readonly>-->
-            <!--</fieldset>  -->
-            <fieldset>
-                <input placeholder="888-867-5309" type="tel" tabindex="3" required readonly>
-            </fieldset>
-            <!--<fieldset>-->
-                <!--  <button name="save" type="save" id="account-save" data-save="...Sending">Save</button>-->
-            <!--</fieldset>-->
-        </div>
-        
-        <fieldset>
-            <button name="edit" type="edit" id="account-edit" data-edit="...Sending">Edit</button>
-        </fieldset>
     </div>
   </form>
 	</body>
