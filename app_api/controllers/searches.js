@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Usr = mongoose.model('User');
+var axios = require('axios');
 
 //helper function
 var sendJsonResponse = function(res,status,content){
@@ -27,6 +28,20 @@ var doAddSearch = function(req,res,user){
                 sendJsonResponse(res,201,thisSearch);
             }
         })
+        axios.post('http://ec2-52-25-39-194.us-west-2.compute.amazonaws.com:8080/create', {
+            //this is the JSON obj
+            minPrice : req.body.minPrice,
+            maxPrice: req.body.maxPrice,
+            bedrooms: req.body.bedrooms,
+            bathrooms: req.body.bathrooms, 
+            slack_token: "xoxp-162614409749-161848202177-162467596899-d6b19daad51d3c8c0a666497e048e86c",
+            neighborhoods:
+                ["berkeley north", "berkeley", "rockridge"]
+        }).then(function(res){
+            console.log("Slack bot created!");
+        }).catch(function(err){
+            console.log(err);     
+        });
     }
 }
 
@@ -123,6 +138,20 @@ module.exports.deleteSearch = function(req,res){
                 sendJsonResponse(res,404,{"Message": "searchid not found"});
             }else{
                 user.searches.id(req.params.searchid).remove();
+                
+                //delete a bot
+                axios({
+                    method: 'delete', 
+                    url: 'http://ec2-52-25-39-194.us-west-2.compute.amazonaws.com:8080/delete',
+                    data: {
+            //this is the JSON obj
+            slack_token: "xoxp-162614409749-161848202177-162467596899-d6b19daad51d3c8c0a666497e048e86c"
+        }
+                }).then(function(res){
+            console.log("Slack bot deleted")
+        }).catch(function(err){
+            console.log(err); 
+                });
                 user.save(function(err){
                     if(err){
                         sendJsonReponse(res,404,err);
