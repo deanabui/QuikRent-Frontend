@@ -38,7 +38,7 @@ var doAddSearch = function(req,res,user){
             neighborhoods:
                 ["berkeley north", "berkeley", "rockridge"]
         }).then(function(res){
-            console.log(res.data)
+            console.log("Slack bot created!");
         }).catch(function(err){
             console.log(err);     
         });
@@ -145,10 +145,10 @@ module.exports.deleteSearch = function(req,res){
                     url: 'http://ec2-52-25-39-194.us-west-2.compute.amazonaws.com:8080/delete',
                     data: {
             //this is the JSON obj
-            slack_token: "xoxp-136900882994-136257198401-162525310386-197fdd0a4bba834cb4a7f40fde8a4559"
+            slack_token: "xoxp-162614409749-161848202177-162467596899-d6b19daad51d3c8c0a666497e048e86c"
         }
                 }).then(function(res){
-            console.log(res.data)
+            console.log("Slack bot deleted")
         }).catch(function(err){
             console.log(err); 
                 });
