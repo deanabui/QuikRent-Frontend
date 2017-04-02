@@ -1,0 +1,82 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url('https://fonts.googleapis.com/css?family=Lora');
+      
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -background-size: cover;
+}
+
+body {
+  font-family: "Lora", serif;
+  font-weight: 100;
+  font-size: 18px;
+  line-height: 30px;
+  color: #777;
+  background-image: url(/images/goldengate.jpg);
+}
+
+.container {
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.FAQ {
+  background: #F9F9F9;
+  opacity: 0.9;
+  width: 100%;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  display: block;
+  font-size: 50px;
+  font-weight: 300;
+  text-align:center;
+  font-family: 'Oswald', sans-serif;
+    color: #777;
+  font-style: bold;
+}
+
+p {
+  font-size: 20px;
+}
+
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+::-webkit-input-placeholder {
+  color: #888;
+}
+
+:-moz-placeholder {
+  color: #888;
+}
+
+::-moz-placeholder {
+  color: #888;
+}
+
+:-ms-input-placeholder {
+  color: #888;
+}

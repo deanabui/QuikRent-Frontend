@@ -8,5 +8,7 @@ router.get('/register', ctrlMain.register);
 router.get('/login', ctrlMain.login);
 router.get('/account', ctrlMain.account);
 router.get('/about', ctrlMain.about);
+router.get('/faq', ctrlMain.faq);
+
 
 module.exports = router;

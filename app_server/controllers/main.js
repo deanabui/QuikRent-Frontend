@@ -18,3 +18,7 @@ module.exports.account = function(req, res){
 module.exports.about = function(req, res){
   res.render('about', { title: 'About' });
 };
+
+module.exports.faq = function(req, res){
+  res.render('faq', { title: 'FAQ' });
+};
