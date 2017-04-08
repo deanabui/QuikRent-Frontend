@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 @import url('https://fonts.googleapis.com/css?family=Lora');
       
 * {
@@ -19,7 +19,6 @@
 }
 
 body {
-/*    font-size: 15px;*/
   background-image: url(/images/walls.png);
 }
 
@@ -48,11 +47,16 @@ body {
   color: #777777 ;
 }
 
+.main {
+    height:100%; 
+    width:100%; 
+    padding: 2em 1em;
+}
+
 .outer {
     display: block;
     background: #170d1f;
     width: 100%;
-/*    border-radius: 1em;*/
     margin-top:1em;
     margin-right: .2em;
     padding: .4em 0em;
@@ -110,7 +114,7 @@ div.profile p {
 
 /* Let's get this party started */
 ::-webkit-scrollbar {
-    width: 3px;
+    width: .35em;
 }
  
 /* Track */

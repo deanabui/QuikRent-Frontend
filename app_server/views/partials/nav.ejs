@@ -12,7 +12,8 @@
 .navbar-custom .navbar-nav {
   font-family: 'Oswald', sans-serif;
   font-size: 1.3em;
-  display: inline-block!;
+    text-align: right;
+    padding-right: 1em;
 }
 
 .navbar-custom .navbar-collapse {
@@ -21,22 +22,24 @@
 
 </style>
 
-<nav class="navbar navbar-custom navbar-fixed-top" style= "background-color:#352047">
+<nav class="navbar navbar-custom navbar-fixed-top" style= "background-color:#352047" role="navigation">
   <div class="container-fluid">
     
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><img src="/images/logowdoor.png" height="50" width="50"></a>
+        <a class="navbar-brand" href="/">
+          <img src="/images/logowdoor.png" height="50" width="50">
+        </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <nav class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="login">Login</a></li>
         <li><a href="register">Register</a></li>
@@ -44,8 +47,11 @@
         <li><a href="about">About</a></li> 
         <li><a href="faq">FAQ</a></li> 
       </ul>
-    </div><!-- /.navbar-collapse -->
+    </nav><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
 </html>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
