@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <% include partials/header%>
+	<body>
+<!-- begin template -->
+  <% include partials/nav%>
+  <div class="container-fluid" id="main">
+  	<div class="col-xs-3">
+      <form id="search" action="#"> <!--method="post"-->
+        <fieldset>
+          <legend>Search for your next home</legend>
+            <b>What are you looking for?</b>
+          <select>
+            <option value="apa">Apartments/Housing</option>
+            <option value="swp">Housing Swap</option>
+            <option value="hsw">Housing Wanted</option>
+            <option value="off">Office & Commercial</option>
+            <option value="rea">Real Estate</option>
+            <option value="roo">Room & Shares</option>
+            <option value="sub">Sublets & Temporary</option>
+          </select><br>
+            <b>Select your region:</b> 
+          <select name="site" id="site" editable="true">
+            <option value="bakersfield">Bakersfield</option>
+            <option value="chico">Chico</option>
+            <option value="fresno">Fresno/Madera</option>
+            <option value="goldcountry">Gold Country</option>
+            <option value="hanford">Hanford-Corcoran</option>
+            <option value="humboldt">Humboldt</option>
+            <option value="imperial">Imperial County</option>
+            <option value="inlandempire">Inland Empire</option>
+            <option value="losangeles">Los Angeles</option>
+            <option value="mendocino">Mendocino</option>
+            <option value="merced">Merced</option>
+            <option value="modesto">Modesto</option>
+            <option value="monterey">Monterey Bay</option>
+            <option value="orangecounty">Orange County</option>
+            <option value="palmsprings">Palm Springs</option>
+            <option value="redding">Redding</option>
+            <option value="sacramento">Sacramento</option>
+            <option value="sandiego">San Diego</option>
+            <option value="sfbay">San Francisco Bay Area</option>
+            <option value="slo">San Luis Obispo</option>
+            <option value="santabarbara">Santa Barbara</option>
+            <option value="santamaria">Santa Maria</option>
+            <option value="siskiyou">Siskiyou County</option>
+            <option value="stockton">Stockton</option>
+            <option value="susanville">Susanville</option>
+            <option value="ventura">Ventury County</option>
+            <option value="visalia">Visalia-Tulare</option>
+            <option value="yubasutter">Yuba-Sutter</option>
+          </select><br>
+          <div id="LA" style="display:none">
+              <b>Select your areas:</b><br>
+              <input type="checkbox" value="wst"> Westside-Southbay-310<br>
+              <input type="checkbox" value="sfv"> San Fernando Valley<br>
+              <input type="checkbox" value="lac"> Central LA (213/323)<br>
+              <input type="checkbox" value="sgv"> San Gabriel Valley<br>
+              <input type="checkbox" value="lgb"> Long Beach/562<br>
+              <input type="checkbox" value="ant"> Antelope Valley<br>
+          </div>
+          <div id="SD" style="display:none">
+              <b>Select your areas:</b><br>
+              <input type="checkbox" value="csd"> City of San Diego<br>
+              <input type="checkbox" value="nsd"> North San Diego County<br>
+              <input type="checkbox" value="esd"> East San Diego County<br>
+              <input type="checkbox" value="ssd"> South San Diego County<br>
+          </div>
+          <div id="SF" style="display:none">
+              <b>Select your areas:</b><br>
+              <input type="checkbox" value="sfc"> City of San Francisco<br>
+              <input type="checkbox" value="sby"> South Bay Area<br>
+              <input type="checkbox" value="eby"> East Bay Area<br>
+              <input type="checkbox" value="pen"> Peninsula<br>
+              <input type="checkbox" value="nby"> North Bay/Marin<br>
+              <input type="checkbox" value="scz"> Santa Cruz County<br>
+          </div>
+            <b>Price Range:</b> <input placeholder="Min" type="number" min="0" tabindex="4" required/>  <input placeholder="Max" type="number" min="0" tabindex="4" required/><br>
+            <b>Bedrooms:</b> <input placeholder="1" type="number" min="0" tabindex="4" required/><br>
+            <b>Bathrooms:</b><input placeholder="1" type="number" min="0" tabindex="4" required/><br>
+            <b>Your <a href="/faq">Slack Token</a>:</b> <input placeholder="Slack Token" type="text" required/>
+        </fieldset>
+          
+        <fieldset>
+          <button name="submit" type="submit" id="search-submit" data-submit="...Sending" disabled>Try It Now</button>
+        </fieldset>
+      </form>
+    </div> <!-- col-xs-3 -->
+    <div id="map_canvas"></div><!--map-->
+  </div> 
+<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+    
+    <!-- GoogleMaps --> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3QMrDnbwoXTmNLW0xNOHHCLNjI54CKdQ&libraries=drawing&callback=initMap" defer></script>
+    <script>
+        window.initMap = function() {
+        var map = new google.maps.Map(document.getElementById('map_canvas'), {
+          center: {lat: 37.804018, lng: -122.32252},
+          zoom: 10
+        });
+          
+        var drawingManager = new google.maps.drawing.DrawingManager({
+          drawingControl: true,
+          drawingControlOptions: {
+            position: google.maps.ControlPosition.TOP_CENTER,
+            drawingModes: ['polygon', 'rectangle', 'polyline', 'circle']
+          },
+          // i don't like the beach flag, but we can leave it for now
+          polygonOptions:{
+              strokeColor: '#837ece',
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#cea97e',
+              fillOpacity: 0.35,
+              draggable: true,
+              editable: true,
+              geodesic: true
+          }, 
+          rectangleOptions:{
+              strokeColor: '#837ece',
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#cea97e',
+              fillOpacity: 0.35,
+              draggable: true,
+              editable: true,
+              geodesic: true
+          }});
+        drawingManager.setMap(map);
+      }
+    </script>
+</html>

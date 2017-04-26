@@ -3,6 +3,10 @@ module.exports.index = function(req, res){
   res.render('index', { title: 'QuikRent' });
 };
 
+module.exports.home = function(req, res){
+  res.render('home', { title: 'QuikRent' });
+};
+
 module.exports.register = function(req, res){
   res.render('register', { title: 'Register for QuikRent' });
 };
