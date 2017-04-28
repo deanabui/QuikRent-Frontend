@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-    <% include partials/header%>
+    <head>
+      <% include partials/header%>
+    </head>
+    
 	<body>
 <!-- begin template -->
   <% include partials/nav%>
@@ -90,10 +93,12 @@
   </div> 
 <!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+        <script src="/javascripts/dropdown.js"></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
 	</body>
     
     <!-- GoogleMaps --> 
+<!--
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3QMrDnbwoXTmNLW0xNOHHCLNjI54CKdQ&libraries=drawing&callback=initMap" defer></script>
     <script>
         window.initMap = function() {
@@ -132,4 +137,5 @@
         drawingManager.setMap(map);
       }
     </script>
+-->
 </html>

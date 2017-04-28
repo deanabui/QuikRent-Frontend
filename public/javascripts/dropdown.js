@@ -1,5 +1,9 @@
 $(document).ready(function(){
-    $('#site').change(function(){     
+    $('#site').change(function(){
+        $('#LA').hide();
+        $('#SD').hide();
+        $('SF').hide();
+        
         var selected = $('option:selected',this).val();
         
         if(selected == 'losangeles'){
@@ -10,13 +14,13 @@ $(document).ready(function(){
         
         if(selected == 'sandiego'){
             $('#LA').hide();
-            $('#LA').hide();
+            $('#SF').hide();
             $('#SD').show();
         }
         
         if(selected == 'sfbay'){
             $('#LA').hide();
-            $('#SD').hide();
+            $('#SD').hide()
             $('#SF').show();
         }
     });
