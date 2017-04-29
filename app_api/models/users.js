@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var crypto = require('crypto');
+var pbkdf2 = require('pbkdf2-sha256');
 var jwt = require('jsonwebtoken');
 //var passportLocalMongoose = require('passport-local-mongoose');
 //defining the searches schema
@@ -38,7 +39,7 @@ userSchema.methods.setPassword = function(password){
  console.log("made it inside the setPassword func");
  this.salt = crypto.randomBytes(16).toString('hex');
  console.log("salted");
- this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'HMAC-SHA1').toString('hex');
+ this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'DSA-SHA1').toString('hex');
  console.log("hashed");
 };
 

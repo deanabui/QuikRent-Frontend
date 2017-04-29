@@ -1,5 +1,6 @@
 var passport = require('passport');
 var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 var User = mongoose.model('User');
 
 var sendJSONresponse = function(res, status, content) {
@@ -8,19 +9,32 @@ var sendJSONresponse = function(res, status, content) {
 };
 
 module.exports.register = function(req, res) {
+  console.log("made it to register function.");
  if(!req.body.rname || !req.body.remail || !req.body.rpassword) {
      sendJSONresponse(res, 400, {
         "message": "All fields required"
      });
+     console.log("missing some aspect of register req");
      return;
  }
+ console.log("made it to create new user.");
  var user = new User();
+    
+ console.log("attempting to create a new user");
+    
  user.name = req.body.rname;
+
+ console.log("able to add name");
  user.email = req.body.remail;
- user.setPassword(req.body.rpassword);
+ console.log("able to save email");
+    
+ user.setPassword(req.body.rpassword); // YOU ARE THE PROBLEM
+    
+ console.log("attemtping to save user");
  user.save(function(err) {
      var token;
      if (err) {
+        console.log(err);
         sendJSONresponse(res, 404, err);
      } else {
          token = user.generateJwt();
@@ -29,6 +43,7 @@ module.exports.register = function(req, res) {
          });
      }
  });
+console.log("end of register function");
 };
 
 module.exports.login = function(req, res) {
