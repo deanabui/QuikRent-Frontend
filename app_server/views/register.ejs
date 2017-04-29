@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<% include partials/header%>
-
-  <link href="/bootstrap/css/register.css" rel="stylesheet">
+		<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="/javascripts/angular.app.js"></script>
+        <link href="/bootstrap/css/register.css" rel="stylesheet">
 	</head>
 	<body>
         <% include partials/nav%>
-  <form id="contact" action="" method="post">
+  <form id="register-form" ng-controller="authCtrl" ng-submit="onRegisterSubmit()">
     <h3>Signup for QuikRent!</h3>
-    <fieldset>
-      <input placeholder="Your Name" type="text" tabindex="1" required autofocus>
-    </fieldset>
-    <fieldset>
-      <input placeholder="Your Email Address" type="text" tabindex="2" required>
-    </fieldset>
-    <fieldset>
-      <input placeholder="Password" type="password" tabindex="3" required>
-    </fieldset>
-    <fieldset>
-      <input placeholder="Confirm Password" type="password_confirm" tabindex="4" required>
-    </fieldset>  
-    <fieldset>
-      <input placeholder="Your Phone Number (optional)" type="tel" tabindex="5" required>
-    </fieldset>
-    <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Register</button>
-    </fieldset>
+    <div class="form-group">
+      <input id="username" type="text" name="rname" tabindex="1" placeholder="Username" value="" ng-model="regcredentials.rname" class="form-control" autofocus/>
+    </div>
+    <div class="form-group">
+    <input id="email" type="email" name="remail" tabindex="1" placeholder="Email Address" value="" ng-model="regcredentials.remail" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <input id="password" type="password" name="rpassword" tabindex="2" placeholder="Password" ng-model="regcredentials.rpassword" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <input id="confirm-password" type="password" name="confirm-password" tabindex="2" placeholder="Confirm Password" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <div class="row">
+        <button id="register-submit" type="submit" name="register-submit" tabindex="4" value="Register Now" class="form-control btn btn-register">Register</button>
+    </div>
+  </div>
   </form>
 	</body>
 </html>

@@ -4,6 +4,7 @@ var ctrlMain = require('../controllers/main');
 
 /* GET home page. */ 
 router.get('/', ctrlMain.index);
+router.get('/home', ctrlMain.home);
 router.get('/register', ctrlMain.register);
 router.get('/login', ctrlMain.login);
 router.get('/account', ctrlMain.account);

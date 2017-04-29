@@ -1,90 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-    <% include partials/header%>
-    <link href="/bootstrap/css/index.css" rel="stylesheet">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3QMrDnbwoXTmNLW0xNOHHCLNjI54CKdQ&libraries=drawing&callback=initMap" defer></script>
-	</head>
+<html ng-app="quikRent">
+    <head>
+      <% include partials/header%>
+    </head>
+    
 	<body>
 <!-- begin template -->
   <% include partials/nav%>
-  <div class="container-fluid" id="main">
-  	<div class="col-xs-3">
-      <form id="search" action="" > <!--method="post"-->
-        <h3>Search for your next home</h3>
-        <fieldset>
-          <input class="reginput" placeholder="State" type="text" tabindex="1" required>
-        </fieldset>
-        <fieldset>
-          <input class="reginput" placeholder="Area" type="text" tabindex="2" required>
-        </fieldset>  
-        <fieldset>
-          <input class="reginput" placeholder="Neighborhood" type="text" tabindex="3" required>
-        </fieldset>
-        <fieldset>
-          <input class="reginput" placeholder="Min Price" type="number" min="0" tabindex="4" required>
-        </fieldset>
-        <fieldset>
-          <input class="reginput" placeholder="Max Price" type="number" min="0" tabindex="5" required>
-        </fieldset>
-        <fieldset>
-          <input class="reginput" placeholder="Bedrooms" type="number" min="0" tabindex="6" required>
-        </fieldset>
-        <fieldset>
-          <input class="reginput" placeholder="Bathrooms" type="number" min="0" tabindex="7" required>
-        </fieldset>
-        <fieldset>
-          <button name="submit" type="submit" id="search-submit" data-submit="...Sending" disabled>Try It Now</button>
-        </fieldset>
-      </form>
-    </div> <!-- col-xs-3 -->
-  <div id="map"></div>
-    <script>
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 37.804018, lng: -122.32252},
-          zoom: 10
-        });
-          
-        var drawingManager = new google.maps.drawing.DrawingManager({
-          drawingMode: google.maps.drawing.OverlayType.MARKER,
-          drawingControl: true,
-          drawingControlOptions: {
-            position: google.maps.ControlPosition.TOP_CENTER,
-            drawingModes: ['marker', 'polygon', 'rectangle', 'polyline', 'circle']
-          },
-          // i don't like the beach flag, but we can leave it for now
-          markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
-          polygonOptions:{
-              strokeColor: '#837ece',
-              strokeOpacity: 0.8,
-              strokeWeight: 2,
-              fillColor: '#cea97e',
-              fillOpacity: 0.35,
-              draggable: true,
-              editable: true,
-              geodesic: true
-          }, 
-          rectangleOptions:{
-              strokeColor: '#837ece',
-              strokeOpacity: 0.8,
-              strokeWeight: 2,
-              fillColor: '#cea97e',
-              fillOpacity: 0.35,
-              draggable: true,
-              editable: true,
-              geodesic: true
-          }
-        });
-        drawingManager.setMap(map);
-      }
-    </script>
-  </div> <!--map-->
-</div> <!--container-fluid-->
+        
+  <div ng-view></div>
+             
 <!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
-		<script src="js/scripts.js"></script>
+        
+        
+        
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="/javascripts/dropdown.js"></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>
