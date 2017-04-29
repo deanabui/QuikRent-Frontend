@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
+//var passportLocalMongoose = require('passport-local-mongoose');
 //defining the searches schema
 var searchSchema = new mongoose.Schema({
     //I think we have to do some belongs to type of syntax but I'm not sure
@@ -17,13 +18,13 @@ var searchSchema = new mongoose.Schema({
 
 
 var userSchema = new mongoose.Schema({
-   email: {
+  name: {
  type: String,
- unique: true,
  required: true
  },
- name: {
+ email: {
  type: String,
+ unique: true,
  required: true
  },
  hash: String,
@@ -34,8 +35,11 @@ var userSchema = new mongoose.Schema({
 });
 
 userSchema.methods.setPassword = function(password){
+ console.log("made it inside the setPassword func");
  this.salt = crypto.randomBytes(16).toString('hex');
- this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
+ console.log("salted");
+ this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'HMAC-SHA1').toString('hex');
+ console.log("hashed");
 };
 
 userSchema.methods.validPassword = function(password) {
@@ -53,6 +57,8 @@ userSchema.methods.generateJwt = function() {
  exp: parseInt(expiry.getTime() / 1000),
  }, process.env.JWT_SECRET);
 };
+
+//userSchema.plugin(passportLocalMongoose);
 
 //building a model of the search schema
 mongoose.model('User', userSchema, 'user');

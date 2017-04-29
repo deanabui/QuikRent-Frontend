@@ -87,6 +87,7 @@
             .register($scope.regcredentials)
             .catch(function(err){
               $scope.formError = err;
+              console.log(err);
           })
           .then(function(data){
               window.location.href = '/home';
@@ -141,13 +142,13 @@
       };
       
       var register = function(user){
-          return $http.post('api/register', user).then(function(data){
+          return $http.post('api/user/register', user).then(function(data){
               saveToken(data.data.token);
           });
       };
       
       var login = function(user){
-          return $http.post('/api/login', user).then(function(data){
+          return $http.post('api/user/login', user).then(function(data){
               saveToken(data.data.token);
           });
       };
