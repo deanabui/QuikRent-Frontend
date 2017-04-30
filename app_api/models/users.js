@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var crypto = require('crypto');
-var pbkdf2 = require('pbkdf2-sha256');
 var jwt = require('jsonwebtoken');
 //var passportLocalMongoose = require('passport-local-mongoose');
 //defining the searches schema
@@ -44,7 +43,7 @@ userSchema.methods.setPassword = function(password){
 };
 
 userSchema.methods.validPassword = function(password) {
- var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
+ var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'DSA-SHA1').toString('hex');
  return this.hash === hash;
 };
 
@@ -58,8 +57,6 @@ userSchema.methods.generateJwt = function() {
  exp: parseInt(expiry.getTime() / 1000),
  }, process.env.JWT_SECRET);
 };
-
-//userSchema.plugin(passportLocalMongoose);
 
 //building a model of the search schema
 mongoose.model('User', userSchema, 'user');

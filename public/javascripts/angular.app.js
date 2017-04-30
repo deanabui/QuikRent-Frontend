@@ -20,7 +20,7 @@
       
       .otherwise( { redirectTo: '/'});  
   }
-    
+  
   function authCtrl($scope, authentication, $location){
       authCtrl.$inject = ['$scope', 'authentication', '$location'];
       
@@ -35,12 +35,14 @@
       $scope.pageHeader = {
           title: 'Sign in to QuikRent'
       };
+      
       $scope.credentials = {
           email: "",
           password: ""
       };
       
       $scope.onLoginSubmit = function(){
+          console.log("made it to loginSubmit");
           $scope.formError = "";
           if(!$scope.credentials.email || !$scope.credentials.password){
               $scope.formError = "Missing email/password.";
@@ -51,14 +53,16 @@
       };
       
       $scope.doLogin = function(){
+          console.log("made it to dologin");
           $scope.formError = "";
           authentication
             .login($scope.credentials)
             .catch(function(err){
+              console.log(err);
               $scope.formError = err;
           })
           .then(function(){
-              window.location.href = '/home';
+              window.location.href = '/';
           });
       }
       
@@ -90,7 +94,7 @@
               console.log(err);
           })
           .then(function(data){
-              window.location.href = '/home';
+              window.location.href = '/';
           });
       }
   }
@@ -123,6 +127,7 @@
           authentication
             .login($scope.credentials)
             .catch(function(err){
+              console.log(err);
               $scope.formError = err;
           })
             .then(function(){
@@ -148,9 +153,11 @@
       };
       
       var login = function(user){
+          console.log("in the login function");
           return $http.post('api/user/login', user).then(function(data){
               saveToken(data.data.token);
           });
+          console.log("end of login func");
       };
       
       var isLoggedIn = function(){

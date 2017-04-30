@@ -51,21 +51,26 @@ module.exports.login = function(req, res) {
          sendJSONresponse(res, 400, {
          "message": "All fields required"
          });
+         console.log("all fields required");
          return;
      }
      passport.authenticate('local', function(err, user, info){
+         console.log("inside authenticate func");
          var token;
          if (err) {
+         console.log(err);
          sendJSONresponse(res, 404, err);
          return;
          }
          if(user){
+         console.log("found user");
          token = user.generateJwt();
          sendJSONresponse(res, 200, {
          "token" : token
          });
          } else {
          sendJSONresponse(res, 401, info);
+         console.log(info);
          }
      })(req, res);
 };
