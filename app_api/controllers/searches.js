@@ -11,33 +11,50 @@ var sendJsonResponse = function(res,status,content){
 //helper function
 var doAddSearch = function(req,res,user){
     if(!user){
+        console.log("no user");
         sendJsonResponse(res,404,{"message":"userid not found"});
     }else{
+        console.log("attempting to push search");
         user.searches.push({
-            minPrice : req.body.minPrice,
-            maxPrice: req.body.maxPrice,
-            bedrooms: req.body.bedrooms,
-            bathrooms: req.body.bathrooms
+            craigslist_housing_section: req.body.craigslist_housing_section,
+            craigslist_site: req.body.craigslist_site,
+            areas: req.body.areas,
+            min_price: req.body.min_price,
+            max_price: req.body.max_price,
+            bed: req.body.bed,
+            bath: req.body.bath,
+            slack_token: req.body.slack_token
         });
+        console.log("attempting to save");
         user.save(function(err,user){
             var thisSerch;
             if(err){
+                console.log(err);
                 sendJsonResponse(res,400,err);
             }else{
+                console.log("no error in save");
                 thisSearch = user.searches;
                 sendJsonResponse(res,201,thisSearch);
             }
-        })
+        });
         axios.post('http://ec2-52-25-39-194.us-west-2.compute.amazonaws.com:8080/create', {
-            //this is the JSON obj
-            minPrice : req.body.minPrice,
-            maxPrice: req.body.maxPrice,
-            bedrooms: req.body.bedrooms,
-            bathrooms: req.body.bathrooms, 
-            slack_token: "xoxp-162614409749-161848202177-162467596899-d6b19daad51d3c8c0a666497e048e86c",
-            neighborhoods:
-                ["berkeley north", "berkeley", "rockridge"]
-        }).then(function(res){
+            craigslist_housing_section: req.body.craigslist_housing_section,
+            craigslist_site: req.body.craigslist_site,
+            areas: req.body.areas,
+            min_price: req.body.min_price,
+            max_price: req.body.max_price,
+            bed: req.body.bed,
+            bath: req.body.bath,
+            slack_token: req.body.slack_token,
+            max_transit_distance: "",
+            neighborhoods: [""],
+            transit_stations: {},
+            boxes:{},
+            
+        }, {headers:{
+            'Content-type': 'application/json',
+            'Accept': 'application/json'
+        }}).then(function(res){
             console.log("Slack bot created!");
         }).catch(function(err){
             console.log(err);     
@@ -62,17 +79,22 @@ module.exports.getSearch = function(req,res){
 //post -- C
 module.exports.newSearch = function(req,res){
    var userid = req.params.userid;
+    console.log("made it to newSearch in controller");
     if(userid){
+        console.log("user id exsists");
         Usr
             .findById(userid)
             .select('searches')
             .exec(function(err,user){
                 if(err){
                     sendJsonResponse(res,400,err);
+                    console.log(err);
                 }else{
+                    console.log("trying doAddSearch");
                     doAddSearch(req,res,user);
                 }
         });
+        console.log("at end of newSearch");
     }else{
         sendJsonResponse(res,404, {"message": "Not found, userid required"});
     }

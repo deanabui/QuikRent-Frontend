@@ -11,11 +11,11 @@ var sendJsonResponse = function(res,status,content){
 //get -- R
 module.exports.getUser = function(req,res){ 
     //sendJsonResponse(res,200, {"status": "success"});
-    
   Usr  
     .findById(req.params.userid)
     .exec(function (err, user){
         sendJsonResponse(res,200,user);
+        return res.send(user);
   });
 };
 

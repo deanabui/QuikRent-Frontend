@@ -9,7 +9,6 @@ var sendJSONresponse = function(res, status, content) {
 };
 
 module.exports.register = function(req, res) {
-  console.log("made it to register function.");
  if(!req.body.rname || !req.body.remail || !req.body.rpassword) {
      sendJSONresponse(res, 400, {
         "message": "All fields required"
@@ -17,20 +16,12 @@ module.exports.register = function(req, res) {
      console.log("missing some aspect of register req");
      return;
  }
- console.log("made it to create new user.");
  var user = new User();
     
- console.log("attempting to create a new user");
-    
  user.name = req.body.rname;
-
- console.log("able to add name");
  user.email = req.body.remail;
- console.log("able to save email");
-    
  user.setPassword(req.body.rpassword); // YOU ARE THE PROBLEM
     
- console.log("attemtping to save user");
  user.save(function(err) {
      var token;
      if (err) {
@@ -43,7 +34,6 @@ module.exports.register = function(req, res) {
          });
      }
  });
-console.log("end of register function");
 };
 
 module.exports.login = function(req, res) {
@@ -51,26 +41,21 @@ module.exports.login = function(req, res) {
          sendJSONresponse(res, 400, {
          "message": "All fields required"
          });
-         console.log("all fields required");
          return;
      }
      passport.authenticate('local', function(err, user, info){
-         console.log("inside authenticate func");
          var token;
          if (err) {
-         console.log(err);
          sendJSONresponse(res, 404, err);
          return;
          }
          if(user){
-         console.log("found user");
          token = user.generateJwt();
          sendJSONresponse(res, 200, {
          "token" : token
          });
          } else {
          sendJSONresponse(res, 401, info);
-         console.log(info);
          }
      })(req, res);
 };

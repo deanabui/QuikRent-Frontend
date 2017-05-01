@@ -3,3 +3,7 @@
 
 # Environment Variables
 .env
+
+.DS_STORE
+
+.git

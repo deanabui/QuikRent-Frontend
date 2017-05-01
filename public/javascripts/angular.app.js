@@ -20,6 +20,57 @@
       
       .otherwise( { redirectTo: '/'});  
   }
+    
+  function searchCtrl($scope, $location, authentication, $http, $window){
+      searchCtrl.$inject = ['$scope', '$location', 'authentication', '$http', '$window'];
+      
+        $scope.currentUser = authentication.currentUser().name;
+        console.log($scope.currentUser);
+        $scope.currentUserEmail = authentication.currentUser().email;
+        console.log($scope.currentUserEmail);
+        $scope.currentUserId = authentication.currentUser().id;
+        console.log($scope.currentUserId);
+      
+      $scope.searchCred = {
+          craigslist_housing_section: "",
+          craigslist_site: "",
+          areas: [""],
+          min_price: "",
+          max_price: "",
+          bed: "",
+          bath: "",
+          slack_token: ""
+      };
+      
+      $scope.onSearchSubmit = function(){
+          console.log("made it to onSearchSubmit");
+          $scope.formError = "";
+          if(!$scope.searchCred.craigslist_housing_section || !$scope.searchCred.craigslist_site || !$scope.searchCred.min_price || !$scope.searchCred.max_price || !$scope.searchCred.bed || !$scope.searchCred.bath || !$scope.searchCred.slack_token){
+              console.log("missing param");
+              $scope.formError = "Missing search parameter.";
+              return false;
+          } else {
+              console.log('attempting doSearch');
+              $scope.doSearch();
+          }
+      };
+      
+      $scope.doSearch = function(){
+          try{
+          console.log("made it to doSearch");
+          $scope.formError = "";
+          console.log("right before http post");
+          console.log($scope.searchCred);
+          return $http.post('api/user/search/' + $scope.currentUserId + '/newsearch', $scope.searchCred).then(function(data){
+              console.log("data from post req " + data);
+              window.location.hre='/account';
+          });
+          }catch(err){
+              console.log(err);
+          }
+          
+      }
+  }
   
   function authCtrl($scope, authentication, $location){
       authCtrl.$inject = ['$scope', 'authentication', '$location'];
@@ -91,7 +142,6 @@
             .register($scope.regcredentials)
             .catch(function(err){
               $scope.formError = err;
-              console.log(err);
           })
           .then(function(data){
               window.location.href = '/';
@@ -131,7 +181,6 @@
               $scope.formError = err;
           })
             .then(function(){
-              console.log("made it to the then of doLogin");
           });
       }
   }
@@ -153,11 +202,9 @@
       };
       
       var login = function(user){
-          console.log("in the login function");
           return $http.post('api/user/login', user).then(function(data){
               saveToken(data.data.token);
           });
-          console.log("end of login func");
       };
       
       var isLoggedIn = function(){
@@ -176,7 +223,8 @@
               var payload = JSON.parse($window.atob(token.split('.')[1]));
               return{
                   email: payload.email,
-                  name: payload.name
+                  name: payload.name,
+                  id: payload._id
               };
           }
           return{
@@ -200,5 +248,9 @@
       };
   }
     
-  angular.module('quikRent').controller('authCtrl', authCtrl).service("authentication", authentication)
+  angular.module('quikRent').controller('authCtrl', authCtrl).service("authentication", authentication);
+  
+  angular.module('quikRent').controller('searchCtrl', searchCtrl);
+                                                     
+                                                     
 })();
