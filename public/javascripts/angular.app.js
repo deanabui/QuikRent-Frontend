@@ -39,31 +39,30 @@
           max_price: "",
           bed: "",
           bath: "",
+          neighborhoods:"",
+          max_transit_distance:"",
           slack_token: ""
       };
       
       $scope.onSearchSubmit = function(){
-          console.log("made it to onSearchSubmit");
           $scope.formError = "";
           if(!$scope.searchCred.craigslist_housing_section || !$scope.searchCred.craigslist_site || !$scope.searchCred.min_price || !$scope.searchCred.max_price || !$scope.searchCred.bed || !$scope.searchCred.bath || !$scope.searchCred.slack_token){
               console.log("missing param");
               $scope.formError = "Missing search parameter.";
               return false;
           } else {
-              console.log('attempting doSearch');
               $scope.doSearch();
+              
           }
       };
       
       $scope.doSearch = function(){
           try{
-          console.log("made it to doSearch");
           $scope.formError = "";
-          console.log("right before http post");
           console.log($scope.searchCred);
           return $http.post('api/user/search/' + $scope.currentUserId + '/newsearch', $scope.searchCred).then(function(data){
               console.log("data from post req " + data);
-              window.location.hre='/account';
+              window.location.href='#/account';
           });
           }catch(err){
               console.log(err);
@@ -80,11 +79,6 @@
       $scope.logout = function(){
           authentication.logout();
           window.location.href = '/';
-      };
-      
-        $scope.hi = "Hi";
-      $scope.pageHeader = {
-          title: 'Sign in to QuikRent'
       };
       
       $scope.credentials = {

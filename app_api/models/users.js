@@ -14,21 +14,25 @@ var searchSchema = new mongoose.Schema({
     },
     areas:String, //how to denote array
     min_price:{
-        type:String,
+        type:Number,
         required:true
     },
     max_price:{
-        type:String,
+        type:Number,
         required:true
     },
     bed:{
-        type:String,
+        type:Number,
         required:true
     },
     bath:{
-        type:String,
+        type:Number,
         required:true
     },
+    craigslist_housing_section:{
+        type:String,
+    },
+    max_transit_distance:{type:Number},
     slack_token:{
         type:String,
         unique: true,
