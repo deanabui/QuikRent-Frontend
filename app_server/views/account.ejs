@@ -9,30 +9,32 @@
         <% include partials/nav%>
         
         
-  <form id="account" action="" method="post">
+  <form ng-controller="profileCtrl" id="account" action="" method="post">
     <h3>Account Information</h3>
-    <div class="container-fluid" style="text-align:center" id="main">
-            <img src="/images/anonprofile.png" alt="Profile Pic" width="200px" height="200px" style="padding-bottom: 10px">
+    <div ng-controller="profileCtrl" class="container-fluid" style="text-align:center" id="main">
             <fieldset>
-                <input placeholder="Jane Doe" type="text" tabindex="1" required autofocus readonly>
+                Name: {{currentUser}}
             </fieldset>
             <fieldset>
-                <input placeholder="janedoe@quikrent" type="email" tabindex="2" required readonly>
+            Email: {{currentUserEmail}}
             </fieldset>
             <fieldset>
-                <input placeholder="••••••••••" type="password" tabindex="2" required readonly>
+                <ul ng-repeat="search in currentUserSearch">
+                    <li ng-repeat="x in search">
+                        Looking for: {{x.craigslist_housing_section}}<br>
+                        Craigslist Site: {{x.craigslist_site}}<br>
+                        Area: {{x.areas}}<br>
+                        Bedroom(s): {{x.bed}}<br>
+                        Bath(s): {{x.bath}}<br>
+                        Min Price: {{x.min_price}}<br>
+                        Max Price: {{x.max_price}}<br>
+                        Distance from public transit (km): {{x.max_transit_distance}}<br>
+                        Slack Token: {{x.slack_token}}<br>
+                    </li>
+                </ul>
             </fieldset>
-            <!--<fieldset>-->
-                <!--  <input placeholder="Confirm Password" type="password_confirm" tabindex="2" required readonly>-->
-            <!--</fieldset>  -->
-            <fieldset>
-                <input placeholder="888-867-5309" type="tel" tabindex="3" required readonly>
-            </fieldset>
-            <!--<fieldset>-->
-                <!--  <button name="save" type="save" id="account-save" data-save="...Sending">Save</button>-->
-            <!--</fieldset>-->
         <fieldset>
-            <button name="edit" type="edit" id="account-edit" data-edit="...Sending">Edit</button>
+            <button name="edit" type="edit" id="account-edit" data-edit="...Sending" disabled>Edit</button>
         </fieldset>
     </div>
   </form>

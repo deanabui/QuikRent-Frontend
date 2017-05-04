@@ -1,61 +1,27 @@
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
-//var passportLocalMongoose = require('passport-local-mongoose');
-//defining the searches schema
+
+
 var searchSchema = new mongoose.Schema({
-    craigslist_housing_section:{
-        type:String,
-        required:true
-    },
-    craigslist_site:{
-        type:String,
-        required:true
-    },
-    areas:String, //how to denote array
-    min_price:{
-        type:Number,
-        required:true
-    },
-    max_price:{
-        type:Number,
-        required:true
-    },
-    bed:{
-        type:Number,
-        required:true
-    },
-    bath:{
-        type:Number,
-        required:true
-    },
-    craigslist_housing_section:{
-        type:String,
-    },
-    max_transit_distance:{type:Number},
-    slack_token:{
-        type:String,
-        unique: true,
-        required:true
-    }
+    craigslist_housing_section: {type:String,required:true},
+    craigslist_site: {type:String,required:true},
+    areas: String,
+    min_price: {type:Number,required:true},
+    max_price: {type:Number,required:true},
+    bed: {type:Number,required:true},
+    bath: {type:Number,required:true},
+    max_transit_distance: {type:Number},
+    slack_token: {type:String,unique: true,required:true}
 });
 
 
 var userSchema = new mongoose.Schema({
-  name: {
- type: String,
- required: true
- },
- email: {
- type: String,
- unique: true,
- required: true
- },
+  name: {type: String,required: true},
+ email: {type: String,unique: true,required: true},
  hash: String,
  salt: String,
-    //the feild searches that will be a sub document connected to the user
-  searches: [searchSchema]
-    
+ searches: [searchSchema]
 });
 
 userSchema.methods.setPassword = function(password){

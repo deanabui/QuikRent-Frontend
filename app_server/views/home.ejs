@@ -12,6 +12,8 @@
         <link href="/bootstrap/css/styles.css" rel="stylesheet">
         <link href="/bootstrap/css/index.css" rel="stylesheet">
         
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        
     </head>
     
 	<body>
@@ -102,7 +104,9 @@
         </fieldset>
       </form>
     </div> <!-- col-xs-3 -->
-    <div id="map"></div><!--map-->
+    <div id="map_canvas">
+      <div id="map"></div>
+    </div>
   </div> 
 <!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
@@ -112,10 +116,10 @@
     
     <!-- GoogleMaps --> 
 
-    
+<!--
     <script>
         window.initMap = function() {
-        var map = new google.maps.Map(document.getElementById('map_canvas'), {
+        var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 37.804018, lng: -122.32252},
           zoom: 10
         });
@@ -150,4 +154,5 @@
         drawingManager.setMap(map);
       }
     </script>
+-->
 </html>

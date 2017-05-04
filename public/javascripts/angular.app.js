@@ -21,15 +21,27 @@
       .otherwise( { redirectTo: '/'});  
   }
     
+  function profileCtrl($scope, $location, authentication, $window, $http){
+      profileCtrl.$inject = ['$scope', '$location', 'authentication', '$window', '$http'];
+      
+    $scope.currentUser =     authentication.currentUser().name;
+    $scope.currentUserEmail = authentication.currentUser().email;
+    $scope.currentUserId = authentication.currentUser().id;
+      
+     try{
+          $scope.formError = "";
+          return $http.get('api/user/search/' + $scope.currentUserId).then(function(data){
+              $scope.currentUserSearch = data;
+              console.log(data);
+          });
+          }catch(err){
+              console.log(err);
+          } 
+  }
+    
   function searchCtrl($scope, $location, authentication, $http, $window){
       searchCtrl.$inject = ['$scope', '$location', 'authentication', '$http', '$window'];
-      
-        $scope.currentUser = authentication.currentUser().name;
-        console.log($scope.currentUser);
-        $scope.currentUserEmail = authentication.currentUser().email;
-        console.log($scope.currentUserEmail);
         $scope.currentUserId = authentication.currentUser().id;
-        console.log($scope.currentUserId);
       
       $scope.searchCred = {
           craigslist_housing_section: "",
@@ -218,7 +230,8 @@
               return{
                   email: payload.email,
                   name: payload.name,
-                  id: payload._id
+                  id: payload._id,
+                  searches: payload.searches
               };
           }
           return{
@@ -243,8 +256,7 @@
   }
     
   angular.module('quikRent').controller('authCtrl', authCtrl).service("authentication", authentication);
-  
-  angular.module('quikRent').controller('searchCtrl', searchCtrl);
-                                                     
+  angular.module('quikRent').controller('searchCtrl', searchCtrl);            
+  angular.module('quikRent').controller('profileCtrl', profileCtrl);
                                                      
 })();
