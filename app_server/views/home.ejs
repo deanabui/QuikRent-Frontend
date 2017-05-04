@@ -65,7 +65,7 @@
             <option value="visalia">Visalia-Tulare</option>
             <option value="yubasutter">Yuba-Sutter</option>
           </select><br>
-          <div id="LA" style="display:none" ng-model="searchCred.areas">
+          <div id="LA" ng-model="searchCred.areas" ng-show="searchCred.craigslist_site=='losangeles'">
               <b>Select your areas:</b><br>
               <input type="checkbox" value="wst"> Westside-Southbay-310<br>
               <input type="checkbox" value="sfv"> San Fernando Valley<br>
@@ -74,14 +74,14 @@
               <input type="checkbox" value="lgb"> Long Beach/562<br>
               <input type="checkbox" value="ant"> Antelope Valley<br>
           </div>
-          <div id="SD" style="display:none" ng-model="searchCred.areas">
+          <div id="SD" ng-model="searchCred.areas" ng-show="searchCred.craigslist_site=='sandiego'">
               <b>Select your areas:</b><br>
               <input type="checkbox" value="csd"> City of San Diego<br>
               <input type="checkbox" value="nsd"> North San Diego County<br>
               <input type="checkbox" value="esd"> East San Diego County<br>
               <input type="checkbox" value="ssd"> South San Diego County<br>
           </div>
-          <div id="SF" style="display:none" ng-model="searchCred.areas">
+          <div id="SF" ng-model="searchCred.areas" ng-show="searchCred.craigslist_site=='sfbay'">
               <b>Select your areas:</b><br>
               <input type="checkbox" value="sfc"> City of San Francisco<br>
               <input type="checkbox" value="sby"> South Bay Area<br>
@@ -110,49 +110,7 @@
   </div> 
 <!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script src="/javascripts/dropdown.js"></script>
+<!--        <script src="/javascripts/dropdown.js"></script>-->
 		<script src="/bootstrap/js/bootstrap.min.js"></script>
 	</body>
-    
-    <!-- GoogleMaps --> 
-
-<!--
-    <script>
-        window.initMap = function() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 37.804018, lng: -122.32252},
-          zoom: 10
-        });
-          
-        var drawingManager = new google.maps.drawing.DrawingManager({
-          drawingControl: true,
-          drawingControlOptions: {
-            position: google.maps.ControlPosition.TOP_CENTER,
-            drawingModes: ['polygon', 'rectangle', 'polyline', 'circle']
-          },
-          // i don't like the beach flag, but we can leave it for now
-          polygonOptions:{
-              strokeColor: '#837ece',
-              strokeOpacity: 0.8,
-              strokeWeight: 2,
-              fillColor: '#cea97e',
-              fillOpacity: 0.35,
-              draggable: true,
-              editable: true,
-              geodesic: true
-          }, 
-          rectangleOptions:{
-              strokeColor: '#837ece',
-              strokeOpacity: 0.8,
-              strokeWeight: 2,
-              fillColor: '#cea97e',
-              fillOpacity: 0.35,
-              draggable: true,
-              editable: true,
-              geodesic: true
-          }});
-        drawingManager.setMap(map);
-      }
-    </script>
--->
 </html>
