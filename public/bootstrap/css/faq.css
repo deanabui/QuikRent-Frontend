@@ -26,14 +26,14 @@ body {
   background-image: url(/images/goldengate.jpg);
 }
 
-.main {
-    height: 93%;
+.faq-main {
+    height: 95%;
     margin: 0 auto;
 }
 
-.FAQ{
+.faq{
     width: 80%;
-    height: 100%;
+    height: 90%;
     position: relative;
     background: #F9F9F9;
     opacity: 0.95;
@@ -43,8 +43,7 @@ body {
     padding: 2em 1em;
     font-family: 'Lora', sans-serif;
     text-align: left;
-    position: relative;
-    overflow-x: hidden;
+    overflow: auto;
 }
 
 div.main img {
