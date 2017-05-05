@@ -23,7 +23,9 @@ body {
 }
 
 .title {
-    width: 35%;
+    width: 33%;
+    height: 400px;
+  overflow-x: hidden;
     float: left;
     padding: 0em 2em;
 }
@@ -44,7 +46,7 @@ body {
   font-size: 18px;
   font-weight: 300;
   font-family: "Lora", serif;
-  color: #777777 ;
+  color: #181818 ;
 }
 
 .main {
@@ -65,7 +67,7 @@ body {
 
 .profile {
   width: 35%;
-  height: 100%;
+  height: 700px;
   margin: 0 auto;
   position: relative;
   overflow-x: hidden;
