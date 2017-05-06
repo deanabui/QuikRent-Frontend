@@ -2,8 +2,10 @@
 /node_modules
 
 # Environment Variables
-#.env
+.env
 
 .DS_STORE
 
 .git
+
+npm-debug.logs
