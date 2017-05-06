@@ -101,12 +101,19 @@
         </fieldset>
           
         <fieldset>
-          <button name="search-submit" type="submit" id="search-submit" ng-click="onSearchSubmit()">Try It Now</button>
+            <button name="search-submit" type="submit" id="search-submit" ng-hide="logInStatus" href="/#/register" disabled>Register to begin searching</button>
+            <button name="search-submit" type="submit" id="search-submit" ng-show="logInStatus" ng-click="onSearchSubmit()">Search</button>
         </fieldset>
       </form>
     </div> <!-- col-xs-3 -->
     <div id="map_canvas">
-      <div id="map"></div>
+      <ng-map zoom="11" center="[37.793688, -122.383304]">
+<!--
+        <marker position="[37.810733, -122.540865]" />
+        <shape name="circle" radius="400" center="[37.810733, -122.540865]" radius="4000" />
+        <control name="overviewMap" opened="true" />
+-->
+      </ng-map>`  
     </div>
   </div> 
 <!-- script references -->

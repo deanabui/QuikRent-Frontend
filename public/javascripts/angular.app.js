@@ -1,6 +1,6 @@
 (function () {
 
-  angular.module('quikRent', ['ngRoute']).config(myConfig); 
+  angular.module('quikRent', ['ngRoute', 'ngMap']).config(myConfig); 
 
   // $routeProvider allows to set up routes 
   function myConfig ($routeProvider) {
@@ -42,6 +42,7 @@
   function searchCtrl($scope, $location, authentication, $http, $window){
       searchCtrl.$inject = ['$scope', '$location', 'authentication', '$http', '$window'];
         $scope.currentUserId = authentication.currentUser().id;
+        $scope.logInStatus = authentication.isLoggedIn();
       
       $scope.searchCred = {
           craigslist_housing_section: "",

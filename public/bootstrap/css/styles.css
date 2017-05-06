@@ -63,6 +63,6 @@ body{
     position:absolute;
     right:16px;
     top:50px;
-    bottom:0;
+/*    bottom:0;*/
     overflow:hidden;
 }
