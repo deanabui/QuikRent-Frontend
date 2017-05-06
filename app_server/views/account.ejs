@@ -3,40 +3,39 @@
 <html lang="en">
 	<head>
 		<% include partials/header%>
-  <link href="/bootstrap/css/account.css" rel="stylesheet">
+		<link href="/bootstrap/css/account.css" rel="stylesheet">
 	</head>
 	<body>
         <% include partials/nav%>
-        
-        
-  <form ng-controller="profileCtrl" id="account" action="" method="post">
-    <h3>Account Information</h3>
-    <div ng-controller="profileCtrl" class="container-fluid" style="text-align:center" id="main">
-            <fieldset>
-                Name: {{currentUser}}
-            </fieldset>
-            <fieldset>
-            Email: {{currentUserEmail}}
-            </fieldset>
-            <fieldset>
-                <ul ng-repeat="search in currentUserSearch">
-                    <li ng-repeat="x in search">
-                        Looking for: {{x.craigslist_housing_section}}<br>
-                        Craigslist Site: {{x.craigslist_site}}<br>
-                        Area: {{x.areas}}<br>
-                        Bedroom(s): {{x.bed}}<br>
-                        Bath(s): {{x.bath}}<br>
-                        Min Price: {{x.min_price}}<br>
-                        Max Price: {{x.max_price}}<br>
-                        Distance from public transit (km): {{x.max_transit_distance}}<br>
-                        Slack Token: {{x.slack_token}}<br>
-                    </li>
-                </ul>
-            </fieldset>
-        <fieldset>
-            <button name="edit" type="edit" id="account-edit" data-edit="...Sending" disabled>Edit</button>
-        </fieldset>
-    </div>
-  </form>
+        <form ng-controller="profileCtrl" id="account" action="" method="post">
+            <h1>Account Information</h1>
+            
+            <h2>Personal</h2>
+            <div ng-controller="profileCtrl" class="container-fluid" style="text-align:left" id="main">
+                <fieldset>
+                    Name: {{currentUser}}
+                </fieldset>
+                <fieldset>
+                    Email: {{currentUserEmail}}
+                </fieldset>
+                <h2>Search Preferences</h2>
+                <fieldset>
+                    <ul ng-repeat="search in currentUserSearch">
+                        <li ng-repeat="x in search">
+                            Looking for: {{x.craigslist_housing_section}}<br>
+                            Craigslist Site: {{x.craigslist_site}}<br>
+                            Area: {{x.areas}}<br>
+                            Bedroom(s): {{x.bed}}<br>
+                            Bath(s): {{x.bath}}<br>
+                            Min Price: {{x.min_price}}<br>
+                            Max Price: {{x.max_price}}<br>
+                            Distance from public transit (km): {{x.max_transit_distance}}<br>
+                            Slack Token: {{x.slack_token}}<br>
+                            <br>
+                        </li>
+                    </ul>
+                </fieldset>
+            </div>
+        </form>
 	</body>
 </html>
