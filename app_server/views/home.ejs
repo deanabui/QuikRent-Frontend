@@ -23,7 +23,7 @@
   	<div class="col-xs-6">
       <form id="search" ng-controller="searchCtrl"> <!--method="post"-->
         <fieldset>
-          <legend>Search for your next home</legend>
+          <legend id="legend">Search for your next home</legend>
             <b>What are you looking for?</b>
           <select id="craigslist_housing_section" ng-model="searchCred.craigslist_housing_section">
             <option value="apa">Apartments/Housing</option>
@@ -93,6 +93,7 @@
             <b>Neighborhoods (comma separated):</b>
             <input type="text" placeholder="Neighbhorhoods" ng-model="searchCred.neighborhoods"><br>
             <b>Price Range:</b><br> <input placeholder="Min" type="number" min="0" tabindex="4" ng-model="searchCred.min_price" required/>  <input placeholder="Max" type="number" min="0" tabindex="4" ng-model="searchCred.max_price" required/><br>
+            <br>
             <b>Bedrooms:</b> <input placeholder="" type="number" min="0" tabindex="4" ng-model="searchCred.bed" required/><br>
             <b>Bathrooms:</b><input placeholder="" type="number" min="0" tabindex="4" ng-model="searchCred.bath" required/><br>
             <b>Kilometers from public transit:</b> <input placeholder="" type="number" min="0" tabindex="4" ng-model="searchCred.max_transit_distance" required/><br>
